@@ -1,5 +1,4 @@
-<img width="345" height="688" alt="Captura de pantalla 2026-11-27 a las 0 25 21" src="https://github.com/user-attachments/assets/21f4fc79-551b-45d2-92f0-6b3c8e99a753" />
-# Nombre de la app
+# TimeItOut
 App iOS nativa (SwiftUI) para controlar pagos recurrentes, con cuenta atrás, widgets y cálculo del ahorro mensual.
 
 ## Capturas
