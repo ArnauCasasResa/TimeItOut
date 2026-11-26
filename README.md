@@ -37,8 +37,23 @@ App iOS nativa (SwiftUI) para controlar pagos recurrentes, con cuenta atrás, wi
       <sub><b>Creación de pago</b></sub>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/36d2377d-aee1-43b2-bbc8-f5d3698c9877" width="220" alt="TÍTULO_PENDIENTE"><br>
-      <sub><b>TÍTULO_PENDIENTE</b></sub>
+      <img src="https://github.com/user-attachments/assets/36d2377d-aee1-43b2-bbc8-f5d3698c9877" width="220" alt="Pantalla de creación de pago, segunda parte"><br>
+      <sub><b>Creación de pago 2</b></sub>
+    </td>
+  </tr>
+</table>
+
+## 🧩 Widgets
+
+<table>
+  <tr>
+    <td align="center" valign="bottom">
+      <img src="https://github.com/user-attachments/assets/74beecd7-0f04-40ce-8344-6438ffe84377" width="268" alt="Widget mediano"><br>
+      <sub><b>Widget mediano</b></sub>
+    </td>
+    <td align="center" valign="bottom">
+      <img src="https://github.com/user-attachments/assets/d35dfe90-232d-4b6b-9b91-b424de44cfe8" width="135" alt="Widget pequeño"><br>
+      <sub><b>Widget pequeño</b></sub>
     </td>
   </tr>
 </table>
