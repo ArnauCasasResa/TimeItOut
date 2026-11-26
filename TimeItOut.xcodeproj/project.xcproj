@@ -11,12 +11,48 @@
     ],
   },
   "files": [
-    { "kind": "folder", "path": "TimeItOut", "target-membership": [ "TimeItOut" ] },
+    { "path": "PagosWidgetExtension.entitlements" },
     {
+      "kind": "folder",
+      "path": "TimeItOut",
+      "target-membership": [
+        "TimeItOut",
+      ],
+      "membership-exceptions": [
+        {
+          "target": "PagosWidgetExtension",
+          "inclusions": [
+            "Compartido.swift",
+          ],
+        },
+      ],
+    }, {
+      "kind": "folder",
+      "path": "PagosWidget",
+      "target-membership": [
+        "PagosWidgetExtension",
+      ],
+      "membership-exceptions": [
+        {
+          "target": "PagosWidgetExtension",
+          "exclusions": [
+            "Info.plist",
+          ],
+        },
+      ],
+    }, {
+      "kind": "group",
+      "name": "Frameworks",
+      "children": [
+        { "path": "<SDK>/System/Library/Frameworks/WidgetKit.framework", "target-membership": [ "PagosWidgetExtension/frameworks" ] },
+        { "path": "<SDK>/System/Library/Frameworks/SwiftUI.framework", "target-membership": [ "PagosWidgetExtension/frameworks" ] },
+      ],
+    }, {
       "kind": "group",
       "name": "Products",
       "children": [
         { "path": "<PRODUCTS>/TimeItOut.app", "id": "000000000000000000000120", "type": "wrapper.application", "index": false },
+        { "path": "<PRODUCTS>/PagosWidgetExtension.appex", "id": "8476FDA830AD0823000635A9", "type": "wrapper.app-extension", "index": false, "target-membership": [ { "build-phase": "TimeItOut/copy/Embed Foundation Extensions", "header-preservation": "remove-on-copy" } ] },
       ],
     },
   ],
@@ -26,14 +62,26 @@
       "id": "000000000000000100000000",
       "product": "Products/TimeItOut.app",
       "product-type": "application",
+      "dependencies": [
+        "PagosWidgetExtension",
+      ],
       "build-phases": [
         "compile-sources",
         "frameworks",
         "resources",
+        {
+          "kind": "copy",
+          "name": "Embed Foundation Extensions",
+          "bundle-base-path": "plugins-directory",
+        },
       ],
       "build-settings": {
+        "ASSETCATALOG_COMPILER_APPICON_NAME": "Icono",
+        "ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS": "YES",
+        "CODE_SIGN_ENTITLEMENTS": "TimeItOut/TimeItOut.entitlements",
         "CODE_SIGN_STYLE": "Automatic",
         "CURRENT_PROJECT_VERSION": "1",
+        "DEVELOPMENT_TEAM": "JQL8N223H4",
         "ENABLE_APP_SANDBOX": "YES",
         "ENABLE_PREVIEWS": "YES",
         "ENABLE_USER_SELECTED_FILES": "readonly",
@@ -48,10 +96,11 @@
         "INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]": "UIStatusBarStyleDefault",
         "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad": "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight",
         "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone": "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight",
+        "IPHONEOS_DEPLOYMENT_TARGET": "17.2",
         "LD_RUNPATH_SEARCH_PATHS": "@executable_path/Frameworks",
         "LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]": "@executable_path/../Frameworks",
         "MARKETING_VERSION": "1.0",
-        "PRODUCT_BUNDLE_IDENTIFIER": "devplaceholder.$(PROJECT_UNIQUE_VALUE:identifier).$(PRODUCT_NAME:rfc1034identifier)",
+        "PRODUCT_BUNDLE_IDENTIFIER": "com.arnaucasasresapersonalteam.TimeItOut",
         "PRODUCT_NAME": "$(TARGET_NAME)",
         "REGISTER_APP_GROUPS": "YES",
         "SDKROOT": "auto",
@@ -63,6 +112,47 @@
         "SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY": "YES",
         "SWIFT_VERSION": "5.0",
         "TARGETED_DEVICE_FAMILY": "1,2,7",
+      },
+    }, {
+      "name": "PagosWidgetExtension",
+      "id": "8476FDA730AD0822000635A9",
+      "product": "Products/PagosWidgetExtension.appex",
+      "product-type": "app-extension",
+      "build-phases": [
+        "compile-sources",
+        "frameworks",
+        "resources",
+      ],
+      "build-settings": {
+        "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
+        "ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME": "WidgetBackground",
+        "CODE_SIGN_ENTITLEMENTS": "PagosWidgetExtension.entitlements",
+        "CODE_SIGN_STYLE": "Automatic",
+        "CURRENT_PROJECT_VERSION": "1",
+        "DEVELOPMENT_TEAM": "JQL8N223H4",
+        "GENERATE_INFOPLIST_FILE": "YES",
+        "INFOPLIST_FILE": "PagosWidget/Info.plist",
+        "INFOPLIST_KEY_CFBundleDisplayName": "PagosWidget",
+        "INFOPLIST_KEY_NSHumanReadableCopyright": "",
+        "IPHONEOS_DEPLOYMENT_TARGET": "17.2",
+        "LD_RUNPATH_SEARCH_PATHS": [
+          "$(inherited)",
+          "@executable_path/Frameworks",
+          "@executable_path/../../Frameworks",
+        ],
+        "MARKETING_VERSION": "1.0",
+        "PRODUCT_BUNDLE_IDENTIFIER": "com.arnaucasasresapersonalteam.TimeItOut.PagosWidget",
+        "PRODUCT_NAME": "$(TARGET_NAME)",
+        "REGISTER_APP_GROUPS": "YES",
+        "SDKROOT": "iphoneos",
+        "SKIP_INSTALL": "YES",
+        "STRING_CATALOG_GENERATE_SYMBOLS": "YES",
+        "SWIFT_APPROACHABLE_CONCURRENCY": "YES",
+        "SWIFT_EMIT_LOC_STRINGS": "YES",
+        "SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY": "YES",
+        "SWIFT_VERSION": "5.0",
+        "TARGETED_DEVICE_FAMILY": "1,2",
+        "VALIDATE_PRODUCT[config=Release]": "YES",
       },
     },
   ],
@@ -138,5 +228,5 @@
     "XROS_DEPLOYMENT_TARGET": "27.2",
   },
   "last-upgrade": "27.2",
-  "last-swift-update": "27.0",
+  "last-swift-update": "27.2",
 }
